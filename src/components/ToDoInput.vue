@@ -31,7 +31,6 @@ export default {
     .todo-input
         display flex
         border-radius 2px
-        padding 2px 8px
         background-color: rgb(250, 250, 250);
         box-shadow: 0 3px 5px rgba(0,0,0,0.20);
         font-size: 14px;

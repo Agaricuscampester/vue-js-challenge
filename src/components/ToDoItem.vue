@@ -20,6 +20,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
+    .todo-item {
+        padding 12px 0
+    }
     .timeago {
         opacity .5
         font-size .8em
