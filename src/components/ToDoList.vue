@@ -6,13 +6,13 @@
         <div class='todo-items'>
             <p class="list-title">Not Done</p>
             <div class="list-items">
-                <to-do-item v-for="todo in $store.state.todos" :key="todo.createdAt.getTime()" :todo="todo"></to-do-item>
+                <to-do-item v-for="todo in $store.state.todos" v-if="!todo.checked" :key="todo.createdAt.getTime()" :todo="todo"></to-do-item>
             </div>
         </div>
         <div class='todo-items done'>
             <p class="list-title">Done</p>
             <div class="list-items">
-                <to-do-item v-for="todo in $store.state.todos" :key="todo.createdAt.getTime()" :todo="todo"></to-do-item>
+                <to-do-item v-for="todo in $store.state.todos" v-if="todo.checked" :key="todo.createdAt.getTime()" :todo="todo"></to-do-item>
             </div>
         </div>
     </div>

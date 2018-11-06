@@ -5,8 +5,13 @@
 </template>
 
 <style lang="stylus">
+html
+  height 100%
+
 body
-  background-color #e8e8e8
+  height 100%
+  background linear-gradient(-20deg, #d0b782 20%, #a0cecf 80%)
+  background-repeat no-repeat
 
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
