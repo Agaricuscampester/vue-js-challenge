@@ -10,7 +10,8 @@
                     v-for="todo in undoneTodos" 
                     :key="todo.createdAt.getTime()" 
                     :todo="todo" 
-                    :now="now">
+                    :now="now"
+                    @remove="removeTodo">
                 </to-do-item>
             </div>
         </div>
@@ -21,7 +22,8 @@
                     v-for="todo in doneTodos" 
                     :key="todo.createdAt.getTime()" 
                     :todo="todo" 
-                    :now="now">
+                    :now="now"
+                    @remove="removeTodo">
                 </to-do-item>
             </div>
         </div>
@@ -31,7 +33,7 @@
 <script>
 import ToDoInput from './ToDoInput'
 import ToDoItem from './ToDoItem'
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
     name: 'ToDoList',
@@ -59,6 +61,10 @@ export default {
     methods: {
         updateCurrentTime() {
             this.now = Date.now()
+        },
+        removeTodo(createdAt) {
+            console.log(createdAt, 'createdAt u listi')
+            this.$store.dispatch('removeTodo', createdAt)
         }
     }
 }
