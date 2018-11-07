@@ -3,16 +3,26 @@
 
         <to-do-input class='input'></to-do-input>
 
-        <div class='todo-items'>
+        <div class='todo-items undone'>
             <p class="list-title">Not Done</p>
             <div class="list-items">
-                <to-do-item v-for="todo in $store.state.todos" v-if="!todo.checked" :key="todo.createdAt.getTime()" :todo="todo"></to-do-item>
+                <to-do-item 
+                    v-for="todo in undoneTodos" 
+                    :key="todo.createdAt.getTime()" 
+                    :todo="todo" 
+                    :now="now">
+                </to-do-item>
             </div>
         </div>
         <div class='todo-items done'>
             <p class="list-title">Done</p>
             <div class="list-items">
-                <to-do-item v-for="todo in $store.state.todos" v-if="todo.checked" :key="todo.createdAt.getTime()" :todo="todo"></to-do-item>
+                <to-do-item 
+                    v-for="todo in doneTodos" 
+                    :key="todo.createdAt.getTime()" 
+                    :todo="todo" 
+                    :now="now">
+                </to-do-item>
             </div>
         </div>
     </div>
@@ -21,9 +31,36 @@
 <script>
 import ToDoInput from './ToDoInput'
 import ToDoItem from './ToDoItem'
+import {mapGetters} from 'vuex'
+
 export default {
-  name: 'ToDoList',
-  components: {ToDoInput, ToDoItem}
+    name: 'ToDoList',
+    components: { ToDoInput, ToDoItem },
+    data() {
+        return {
+            now: Date
+        }
+    },
+    computed: {
+        ...mapGetters(['doneTodos', 'undoneTodos']),
+        doneTodos() {
+            return this.$store.getters.doneTodos
+        },
+        undoneTodos() {
+            return this.$store.getters.undoneTodos
+        }
+    },
+    created() {
+        setInterval(this.updateCurrentTime, 1000 * 60)
+    },
+    destroyed() {
+        clearInterval(this.updateCurrentTime)
+    },
+    methods: {
+        updateCurrentTime() {
+            this.now = Date.now()
+        }
+    }
 }
 </script>
 

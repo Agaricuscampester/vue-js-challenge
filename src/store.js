@@ -27,6 +27,15 @@ export const actions = {
   }
 }
 
+export const getters = {
+  doneTodos: state => {
+    return state.todos.filter(todo => todo.checked)
+  },
+  undoneTodos: state => {
+    return state.todos.filter(todo => !todo.checked)
+  }
+}
+
 export const defaultState = {
   todos: [
     {
@@ -45,5 +54,6 @@ export const defaultState = {
 export default new Vuex.Store({
   state: defaultState,
   mutations,
-  actions
+  actions,
+  getters
 })
