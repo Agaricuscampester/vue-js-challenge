@@ -1,7 +1,9 @@
 <template>
   <div class="todo-input">
       <input class="text-field" @keyup.enter='addTodo()' placeholder="Take a note" v-model="text" type="text"/>
-      <button class="submit-button" :disabled='!addTodoPossible' @click="addTodo()">+</button>
+      <button class="submit-button" :disabled='!addTodoPossible' @click="addTodo()">
+        <i class="fas fa-plus"></i>
+      </button>
   </div>
 </template>
 
@@ -31,20 +33,20 @@ export default {
     .todo-input
         display flex
         border-radius 2px
-        background-color: rgb(250, 250, 250);
-        box-shadow: 0 3px 5px rgba(0,0,0,0.20);
-        font-size: 14px;
-        line-height: 19px;
-        padding: 12px;
+        background-color rgb(250, 250, 250)
+        box-shadow 0 3px 5px rgba(0,0,0,0.20)
+        font-size 14px
+        line-height 19px
+        padding 12px
         .text-field
             border none
-            outline-width: 0;
+            outline-width 0
             background-color transparent
             flex 1
         .submit-button
-            color: rgba(0,0,0,.7)
+            color darken(#a0cecf,30%)
             font-weight 300
-            outline-width: 0;
+            outline-width 0
             border none
             background-color transparent
             cursor pointer

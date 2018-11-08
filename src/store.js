@@ -11,9 +11,8 @@ export const mutations = {
     // TODO
   },
   removeTodo: (state, payload) => {
-    var index = state.todos.findIndex(x => x.createdAt == payload);
-    console.log(index, 'index')
-    state.todos.splice(index, 1);
+    var index = state.todos.findIndex(x => x.createdAt == payload)
+    state.todos.splice(index, 1)
   }
 }
 

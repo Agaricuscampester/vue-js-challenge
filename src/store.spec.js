@@ -23,4 +23,16 @@ describe('TodoStore', () => {
       ]
     })
   })
+  it('removeTodo', () => {
+    const testTodo = {
+      text: 'removeTodoTest',
+      checked: true,
+      createdAt: new Date()
+    }
+    mutations.removeTodo(initialState, testTodo)
+
+    expect(initialState).toEqual({
+      todos: []
+    })
+  })
 })

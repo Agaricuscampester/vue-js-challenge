@@ -1,11 +1,21 @@
 <template>
   <div class="todo-item">
 
-    <input type='checkbox' v-model="todo.checked">
-     {{this.todo.text}}
-     <span class='timeago'> - {{ timeAgo }}</span>
-     <button class="delete-button" @click="removeTodo(todo.createdAt)">
-       <i class="fas fa-trash"></i>
+    <input class="item-checkbox" type='checkbox' v-model="todo.checked">
+    <input
+      class="edit-field"
+      type="text"
+      ref="edit"
+      v-model="todo.text"
+      v-if="editEnabled"
+      @keyup.enter="saveUpdate(todo.createdAt)"
+      @keyup.esc="cancelUpdate(todo.createdAt)"
+      @blur="cancelUpdate(todo.createdAt)"
+    >
+    <span v-if="!editEnabled" @click="updateTodo(todo.createdAt)">{{this.todo.text}}</span>
+    <span class='timeago'> - {{ timeAgo }}</span>
+    <button class="delete-button" @click="removeTodo(todo.createdAt)">
+      <i class="fas fa-trash"></i>
     </button>
   </div>
 </template>
@@ -21,6 +31,12 @@ export default {
     },
     now: {}
   },
+  data () {
+    return {
+      editEnabled: false,
+      todoText: ''
+    }
+  },
   computed: {
     timeAgo () {
       let currentDate = this.now
@@ -28,8 +44,21 @@ export default {
     }
   },
   methods: {
-    removeTodo(createdAt) {
+    removeTodo (createdAt) {
       this.$emit('remove', createdAt)
+    },
+    updateTodo (createdAt) {
+      this.todoText = this.todo.text
+      this.editEnabled = true
+      this.$nextTick(() => this.$refs.edit.focus())
+    },
+    saveUpdate (createdAt) {
+      this.todoText = this.todo.text
+      this.editEnabled = false
+    },
+    cancelUpdate (createdAt) {
+      this.todo.text = this.todoText
+      this.editEnabled = false
     }
   }
 }
@@ -58,5 +87,16 @@ export default {
         position absolute
         right 10px
         outline none
+    }
+    .edit-field {
+        background-color #fafafa
+        outline none
+        border none
+        font inherit
+        width 50%
+        margin-left 10px
+    }
+    .item-checkbox {
+        margin-right 10px
     }
 </style>
