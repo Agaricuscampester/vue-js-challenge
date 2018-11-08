@@ -66,17 +66,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-    .todo-item {
+    .todo-item
         padding 20px 0
         border-top 1px lightgray dashed
         position relative
-    }
-    .timeago {
+
+    .timeago
         opacity .5
         font-size .8em
         font-weight 200
-    }
-    .delete-button {
+    
+    .delete-button
         background-color #fafafa
         color #B22222
         border none
@@ -87,16 +87,15 @@ export default {
         position absolute
         right 10px
         outline none
-    }
-    .edit-field {
+    
+    .edit-field
         background-color #fafafa
         outline none
         border none
         font inherit
         width 50%
         margin-left 10px
-    }
-    .item-checkbox {
+    
+    .item-checkbox
         margin-right 10px
-    }
 </style>

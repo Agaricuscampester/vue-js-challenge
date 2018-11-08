@@ -22,8 +22,10 @@ export default {
   },
   methods: {
     addTodo () {
-      this.$store.dispatch('addTodo', {text: this.text, checked: false, createdAt: new Date()})
-      this.text = ''
+	  if(this.addTodoPossible) {
+		this.$store.dispatch('addTodo', {text: this.text, checked: false, createdAt: new Date()})
+		this.text = ''
+	  }
     }
   }}
 </script>

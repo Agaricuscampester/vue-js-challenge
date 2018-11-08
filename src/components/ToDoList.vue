@@ -70,7 +70,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-	.todo-items {
+	.todo-items
 		margin: auto
 		margin-top 20px
 		display flex
@@ -80,20 +80,20 @@ export default {
 		max-width: 624px
 		margin-bottom 10px
 		padding 0 12px
-	}
-	.list-title {
+	
+	.list-title
 		text-align center
-	}
-	.list-items {
+
+	.list-items
 		max-height 230px
 		overflow auto
-	}
-	.input {
+	
+	.input
 		max-width 624px
 		margin auto
 		margin-bottom 10px
-	}
-	.tip {
-	  font-size: 14px
-	}
+	
+	.tip
+		font-size 14px
+	
 </style>
