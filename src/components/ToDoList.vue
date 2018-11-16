@@ -43,13 +43,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['doneTodos', 'undoneTodos']),
-    doneTodos () {
-      return this.$store.getters.doneTodos
-    },
-    undoneTodos () {
-      return this.$store.getters.undoneTodos
-    }
+    ...mapGetters(['doneTodos', 'undoneTodos'])
   },
   created () {
     setInterval(this.updateCurrentTime, 1000 * 60)
